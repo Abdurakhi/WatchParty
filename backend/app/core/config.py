@@ -120,15 +120,9 @@ class Settings(BaseSettings):
     def REDIS_URL(self) -> str:
 
         if self.REDIS_PASSWORD:
-            return (
-                f"redis://:{self.REDIS_PASSWORD}"
-                f"@{self.REDIS_HOST}:{self.REDIS_PORT}"
-            )
+            return f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
 
-        return (
-            f"redis://"
-            f"{self.REDIS_HOST}:{self.REDIS_PORT}"
-        )
+        return f"redis://{self.REDIS_HOST}:{self.REDIS_PORT}"
 
 
 @lru_cache
